@@ -41,10 +41,10 @@ const likePost = asyncWrapper(async (req, res) => {
   const post = req.body
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('no post with that id')
-  const post = await Post.findById(id)
+  const likePost = await Post.findById(id)
   const likedPost = await Post.findByIdAndUpdate(
     id,
-    { likeCount: post.likeCount + 1 },
+    { likeCount: likePost.likeCount + 1 },
     { new: true }
   )
   res.status(201).json({

@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/posts', postRoute)
 
-const port = process.env.PORT || 3500
+const port = process.env.PORT || 3000
 
 const startServer = async () => {
   try {
