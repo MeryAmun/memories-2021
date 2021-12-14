@@ -30,6 +30,10 @@ app.use((req, res, next) => {
 //routes
 app.use('/posts', postRoute)
 
+app.get('/', (req, res) => {
+  res.send('Hello and welcome to Memories API')
+})
+
 const port = process.env.PORT || 3000
 
 const startServer = async () => {
