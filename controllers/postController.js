@@ -27,11 +27,29 @@ const updatePost = asyncWrapper(async (req, res, next) => {
 })
 
 const deletePost = asyncWrapper(async (req, res, next) => {
-  const { id: _id } = req.params
+  const { id } = req.params
   const post = req.body
-  if (!mongoose.Types.ObjectId.isValid(_id))
+  if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('no post with that id')
-  await Post.findByIdAndRemove(_id)
+  await Post.findByIdAndRemove(id)
+  console.log('Delete')
   res.status(201).json({ msg: 'Post deleted successfully' })
 })
-module.exports = { getAllPosts, createPost, updatePost, deletePost }
+
+const likePost = asyncWrapper(async (req, res) => {
+  const { id } = req.params
+  const post = req.body
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send('no post with that id')
+  const post = await Post.findById(id)
+  const likedPost = await Post.findByIdAndUpdate(
+    id,
+    { likeCount: post.likeCount + 1 },
+    { new: true }
+  )
+  res.status(201).json({
+    likedPost,
+    msg: 'Post liked',
+  })
+})
+module.exports = { getAllPosts, createPost, updatePost, deletePost, likePost }
