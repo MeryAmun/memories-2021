@@ -38,10 +38,11 @@ const PORT = process.env.PORT || 5000
 const host = '0.0.0.0'
 const startServer = async () => {
   try {
-    await connectDb(process.env.MONGO_URL)
-    app.listen(PORT, host, () => {
-      console.log(`we are live on port ${PORT}`)
-    })
+    await connectDb(process.env.MONGO_URL).then(() =>
+      app.listen(PORT, host, () => {
+        console.log(`we are live on port ${PORT}`)
+      })
+    )
   } catch (error) {
     console.log(error)
   }
