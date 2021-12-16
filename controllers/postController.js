@@ -32,7 +32,7 @@ const deletePost = asyncWrapper(async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('no post with that id')
   await Post.findByIdAndRemove(id)
-  console.log('Delete')
+
   res.status(201).json({ msg: 'Post deleted successfully' })
 })
 
