@@ -35,9 +35,7 @@ app.get('/', (req, res) => {
 })
 
 let PORT = process.env.PORT
-if (PORT == null || PORT == '') {
-  PORT = 8000
-}
+const host = '0.0.0.0'
 
 const startServer = async () => {
   try {
