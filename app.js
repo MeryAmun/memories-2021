@@ -34,18 +34,39 @@ app.get('/', (req, res) => {
   res.send('Hello and welcome to Memories API')
 })
 
-const PORT = process.env.PORT || 5000
-const host = '0.0.0.0'
+let PORT = process.env.PORT
+if (PORT == null || PORT == '') {
+  PORT = 8000
+}
+
 const startServer = async () => {
   try {
-    await connectDb(process.env.MONGO_URL).then(() =>
+    await connectDb(process.env.MONGO_URL).then(() => {
+      if (PORT == null || PORT == '') {
+        PORT = 8000
+      }
       app.listen(PORT, host, () => {
         console.log(`we are live on port ${PORT}`)
       })
-    )
+    })
   } catch (error) {
     console.log(error)
   }
 }
-
 startServer()
+
+// const PORT = process.env.PORT || 5000
+// const host = '0.0.0.0'
+// const startServer = async () => {
+//   try {
+//     await connectDb(process.env.MONGO_URL).then(() =>
+//       app.listen(PORT, host, () => {
+//         console.log(`we are live on port ${PORT}`)
+//       })
+//     )
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+// startServer()
