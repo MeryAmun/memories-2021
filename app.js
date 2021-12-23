@@ -5,6 +5,7 @@ const cors = require('cors')
 require('dotenv').config()
 const connectDb = require('./db/connect')
 const postRoute = require('./routes/postRoutes.js')
+const authRoutes = require('./routes/authRoutes')
 
 const app = express()
 //wew must always place app.use(cors) middleware above the routes.
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/posts', postRoute)
+app.use('/posts', authRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello and welcome to Memories API')
