@@ -38,15 +38,21 @@ const deletePost = asyncWrapper(async (req, res, next) => {
 
 const likePost = asyncWrapper(async (req, res) => {
   const { id } = req.params
+
+  if (!req.userId)
+    return res.json({ message: 'Sign in or register to like post' })
   const post = req.body
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('no post with that id')
   const likePost = await Post.findById(id)
-  const likedPost = await Post.findByIdAndUpdate(
-    id,
-    { likeCount: likePost.likeCount + 1 },
-    { new: true }
-  )
+
+  const index = likePost.likes.findIndex((id) => id === String(req.id))
+  if (index === -1) {
+    likePost.likes.push(req.userId)
+  } else {
+    likePost.likes.filter((id) => id !== String(req.userId))
+  }
+  const likedPost = await Post.findByIdAndUpdate(id, likePost, { new: true })
   res.status(201).json({
     likedPost,
     msg: 'Post liked',
