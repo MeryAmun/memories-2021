@@ -1,10 +1,10 @@
-import asyncWrapper from '../middleware/async'
+const asyncWrapper = require('../middleware/async')
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 
-export const signIn = asyncWrapper(async (req, res, next) => {
+const signIn = asyncWrapper(async (req, res, next) => {
   const { email, password } = req.body
   const existingUser = await User.findOne({ email })
 
@@ -25,7 +25,7 @@ export const signIn = asyncWrapper(async (req, res, next) => {
   res.status(200).json({ result: existingUser, token })
 })
 
-export const signUp = asyncWrapper(async (req, res, next) => {
+const signUp = asyncWrapper(async (req, res, next) => {
   const { firstName, lastName, email, password, confirmPassword } = req.body
   const existingUser = await User.findOne({ email })
   if (existingUser)
@@ -45,3 +45,4 @@ export const signUp = asyncWrapper(async (req, res, next) => {
   )
   res.status(200).json({ newUser, token })
 })
+module.exports = { signIn, signUp }

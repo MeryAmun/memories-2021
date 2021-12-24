@@ -1,6 +1,5 @@
 const asyncWrapper = require('./async')
-
-const jwt = req('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 //wants to like a post? click the like button,> auth middleware checks is user has permission or authorization then runs next function
 const authMiddleware = asyncWrapper((req, res, next) => {
