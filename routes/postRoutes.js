@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const authMiddleware = require('../')
 const {
   getAllPosts,
   createPost,
@@ -9,9 +10,9 @@ const {
 } = require('../controllers/postController.js')
 
 router.get('/', getAllPosts)
-router.post('/', createPost)
-router.patch('/:id', updatePost)
-router.delete('/:id', deletePost)
-router.patch('/:id/likePost', likePost)
+router.post('/', authMiddleware, createPost)
+router.patch('/:id', authMiddleware, updatePost)
+router.delete('/:id', authMiddleware, deletePost)
+router.patch('/:id/likePost', authMiddleware, likePost)
 
 module.exports = router
