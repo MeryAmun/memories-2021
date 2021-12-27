@@ -32,6 +32,10 @@ app.use((req, res, next) => {
 app.use('/posts', postRoute)
 app.use('/users', authRoutes)
 
+app.get('/users', (req, res) => {
+  res.send('Hello welcome to users section')
+})
+
 app.get('/', (req, res) => {
   res.send('Hello and welcome to Memories API')
 })

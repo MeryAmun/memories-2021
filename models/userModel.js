@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, 'must provide name'],
     trim: true,
-    maxLength: [20, 'name can not be more than 10 characters'],
+    maxLength: [10, 'name can not be more than 10 characters'],
   },
   email: {
     type: String,
@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   },
   password: { type: String, required: true },
-  confirmPassword: { type: String, required: true },
+  id: { type: String },
 })
 
 module.exports = mongoose.model('User', userSchema)

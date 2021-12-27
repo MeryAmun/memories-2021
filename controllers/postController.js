@@ -9,8 +9,14 @@ const getAllPosts = asyncWrapper(async (req, res, next) => {
   }
 })
 const createPost = asyncWrapper(async (req, res, next) => {
-  const post = await Post.create(req.body)
-  res.status(201).json({ post })
+  const allPosts = req.body
+  const newPost = new Post({
+    ...allPosts,
+    creator: req.userId,
+    createdAt: new Date().toISOString(),
+  })
+  await newPost.save()
+  res.status(201).json({ newPost })
 })
 
 const updatePost = asyncWrapper(async (req, res, next) => {
