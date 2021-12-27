@@ -33,6 +33,7 @@ const signUp = asyncWrapper(async (req, res, next) => {
   if (password !== confirmPassword)
     return res.status(400).json({ message: "Passwords don't match" })
   const hashedPassword = await bcrypt.hash(password, 12)
+
   const newUser = await User.create({
     email,
     password: hashedPassword,

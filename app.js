@@ -30,9 +30,9 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/posts', postRoute)
-app.use('/users', authRoutes)
+app.use('/user', authRoutes)
 
-app.get('/users', (req, res) => {
+app.get('/user', (req, res) => {
   res.send('Hello welcome to users section')
 })
 
