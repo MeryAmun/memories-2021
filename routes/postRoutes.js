@@ -7,8 +7,10 @@ const {
   updatePost,
   deletePost,
   likePost,
+  getPostsBySearch
 } = require('../controllers/postController.js')
 
+router.get('/search', getPostsBySearch)
 router.get('/', getAllPosts)
 router.post('/', authMiddleware, createPost)
 router.patch('/:id', authMiddleware, updatePost)

@@ -2,12 +2,22 @@ const mongoose = require('mongoose')
 const Post = require('../models/postModel')
 const asyncWrapper = require('../middleware/async')
 
+
+
 const getAllPosts = asyncWrapper(async (req, res, next) => {
   const posts = await Post.find({})
   if (posts) {
     res.status(200).json(posts)
   }
 })
+
+const getPostsBySearch = asyncWrapper(async (req, res, next) => {
+  const {searchQuery, tags} = req.query
+ const title = new RegExp(searchQuery, 'i');
+ const posts = await Post.find({$or:[{title}, {tags:{$in: tags.split('.')}}]})
+ res.json({data:posts})
+})
+
 const createPost = asyncWrapper(async (req, res, next) => {
   const allPosts = req.body
   const newPost = new Post({
@@ -64,4 +74,4 @@ const likePost = asyncWrapper(async (req, res) => {
     msg: 'Post liked',
   })
 })
-module.exports = { getAllPosts, createPost, updatePost, deletePost, likePost }
+module.exports = { getAllPosts,getPostsBySearch, createPost, updatePost, deletePost, likePost }
