@@ -1,0 +1,5 @@
+/posts https://memory-lane2021.herokuapp.com/posts 200!
+/posts/:id https://memory-lane2021.herokuapp.com/posts/:id 200!
+/posts/:id/likePost https://memory-lane2021.herokuapp.com/posts/:id/likePost 200!
+https://memory-lane-2021.netlify.app/auth/* https://memory-lane2021.herokuapp.com/user/login 200!
+https://memory-lane-2021.netlify.app/auth/* https://memory-lane2021.herokuapp.com/user/signup 200!
