@@ -4,6 +4,7 @@ import {
   FETCH_ALL,
   LIKE,
   UPDATE,
+  FETCH_BY_SEARCH 
 } from '../constants/actionTypes'
 
 const postReducer = (posts = [], action) => {
@@ -17,6 +18,8 @@ const postReducer = (posts = [], action) => {
     case DELETE:
       return posts.filter((post) => post._id !== action.payload)
     case FETCH_ALL:
+      return action.payload
+      case FETCH_BY_SEARCH:
       return action.payload
     case CREATE:
       return [...posts, action.payload]

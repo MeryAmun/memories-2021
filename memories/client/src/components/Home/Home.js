@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
 import { Posts } from '../posts/Posts'
-import { getPosts } from '../../actions/postActions'
+import { getPosts, getPostsBySearch } from '../../actions/postActions'
 import { useDispatch } from 'react-redux'
 import useStyles from './styles'
 import {Paginate} from '../Pagination'
@@ -37,10 +37,12 @@ export const Home = () => {
 
 
 const searchPost = () => {
-  if(search.trim()){
+  if(search.trim() || tags){
     //dispatch
+    dispatch(getPostsBySearch({search, tags:tags.join(',')}));
+    history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
   }else{
-    history.push('/')
+    history.push('/');
   }
 }
 
@@ -70,7 +72,6 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
             <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-         
           <AppBar className={classes.appBarSearch} positon='static' color='inherit'>
           <TextField name=''search variant='outlined' label='Search Memories' fullWidth value={search}
           onKeyPress={handleKeyPress}
