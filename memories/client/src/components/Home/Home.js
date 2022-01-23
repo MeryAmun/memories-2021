@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Form } from '../form/Form'
 import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
 import { Posts } from '../posts/Posts'
 import { getPosts } from '../../actions/postActions'
 import { useDispatch } from 'react-redux'
 import useStyles from './styles'
+import {Paginate} from '../Pagination'
 
 export const Home = () => {
   const classes = useStyles()
@@ -33,6 +35,9 @@ export const Home = () => {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
+            <Paper elavation={6}>
+            <Paginate/>
+            </Paper>
           </Grid>
         </Grid>
       </Container>
