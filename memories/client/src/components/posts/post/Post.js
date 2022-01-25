@@ -49,7 +49,7 @@ export const Post = ({ post, setCurrentId }) => {
   }
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} rasised elevation={6}>
       <CardMedia className={classes.media} image={post.selectedFile} />
 
       <div className={classes.overlay}>

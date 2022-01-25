@@ -7,7 +7,8 @@ import Button from '@mui/material/Button'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import decode from 'jwt-decode'
-import memories from '../images/memories.png'
+import memoriesLogo from '../images/memories-Logo.png'
+import memoriesText from '../images/memories-Text.png'
 import { signout } from '../../actions/authActions'
 import { useDispatch } from 'react-redux'
 import useStyles from './style'
@@ -45,17 +46,11 @@ export const Navbar = () => {
       position='static'
       color='inherit'
     >
-      <div className={classes.brandContainer}>
-        <Typography
-          component={Link}
-          to='/'
-          className={classes.heading}
-          variant='h4'
-          align='center'
-        >
-          Stories
-        </Typography>
-      </div>
+      <Link to='/' className={classes.brandContainer}>
+      <img src={memoriesText} alt='icon' height='45px'/>
+        <img src={memoriesLogo} alt='icon' height='40px'/>
+      
+      </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.portfolio}>
