@@ -7,7 +7,7 @@ const asyncWrapper = require('../middleware/async')
 const getAllPosts = asyncWrapper(async (req, res, next) => {
   const posts = await Post.find({})
   if (posts) {
-    res.status(200).json(posts)
+    res.status(200).json({posts})
   }
 })
 
@@ -15,7 +15,7 @@ const getPostsBySearch = asyncWrapper(async (req, res, next) => {
   const {searchQuery, tags} = req.query
  const title = new RegExp(searchQuery, 'i');
  const posts = await Post.find({$or:[{title}, {tags:{$in: tags.split('.')}}]})
- res.json({data:posts})
+ res.status(200).json({data:posts})
 })
 
 const createPost = asyncWrapper(async (req, res, next) => {
