@@ -10,7 +10,7 @@ import { getPosts, getPostsBySearch } from '../../actions/postActions'
 import { useDispatch } from 'react-redux'
 import useStyles from './styles'
 import {Paginate} from '../Pagination'
-import {AppBar, TextField, Button} from '@mui/material'
+import {TextField, Button,Typography} from '@mui/material'
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from 'material-ui-chip-input'
 
@@ -72,7 +72,7 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
             <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-          {/* <AppBar className={classes.appBarSearch} positon='static' color='inherit'>
+          <div className={classes.appBarSearch} positon='static' color='inherit'>
           <TextField name='search' variant='outlined' label='Search Memories' fullWidth value={search}
           onKeyPress={handleKeyPress}
            onChange={(e) => setSearch(e.target.value)}/>
@@ -84,7 +84,7 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
            label='Search by Tags'
            variant='outlined'/>
            <Button onClick={searchPost} className={classes.searchButton} color='primary' variant='contained'>Search</Button>
-          </AppBar> */}
+          </div>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             <Paper elavation={6}>
             <Paginate />
