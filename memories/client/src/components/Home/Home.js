@@ -31,9 +31,7 @@ export const Home = () => {
   const [tags, setTags] = useState([]);
   
 
-  useEffect(() => {
-    dispatch(getPosts())
-  }, [currentId, dispatch])
+  
 
 
 const searchPost = () => {
@@ -87,7 +85,7 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
           </div>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             <Paper elavation={6}>
-            <Paginate />
+            <Paginate  page={page}/>
             </Paper>
           </Grid>
         </Grid>

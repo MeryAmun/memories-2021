@@ -47,8 +47,8 @@ export const Navbar = () => {
       color='inherit'
     >
       <Link to='/' className={classes.brandContainer}>
-      <img src={memoriesText} alt='icon' height='45px'/>
-        <img src={memoriesLogo} alt='icon' height='40px'/>
+      <img src={memoriesText}   alt='icon' height='45px'/>
+        <img src={memoriesLogo}  className={classes.image} alt='icon' height='40px'/>
       
       </Link>
       <Toolbar className={classes.toolbar}>
