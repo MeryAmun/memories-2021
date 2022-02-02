@@ -5,10 +5,15 @@ const asyncWrapper = require('../middleware/async')
 
 
 const getAllPosts = asyncWrapper(async (req, res, next) => {
-  const posts = await Post.find({})
-  if (posts) {
-    res.status(200).json({posts})
-  }
+
+const {page} = req.query;
+const LIMIT = 8;
+const startIndex = (Number(page) - 1 ) * LIMIT; //get starting index of every page
+const total = await Post.countDocuments({});
+
+  const posts = await Post.find().sort({_id: -1 }).limit(LIMIT).skip(startIndex);
+  res.status(200).json({data: posts, currentPage: Number(page), numberOfPage: Math.ceil(total / LIMIT)})
+
 })
 
 const getPostsBySearch = asyncWrapper(async (req, res, next) => {
