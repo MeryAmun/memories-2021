@@ -66,11 +66,8 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
           alignItems='stretch' 
           spacing={3}
         >
-          <Grid item xs={12} sm={6} md={9}>
-            <Posts setCurrentId={setCurrentId} />
-          </Grid>
           <Grid item xs={12} sm={6} md={3}>
-          <div className={classes.appBarSearch} positon='static' color='inherit'>
+          <div className={classes.appBarSearch} position='static' color='inherit'>
           <TextField name='search' variant='outlined' label='Search Memories' fullWidth value={search}
           onKeyPress={handleKeyPress}
            onChange={(e) => setSearch(e.target.value)}/>
@@ -84,9 +81,12 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
            <Button onClick={searchPost} className={classes.searchButton} color='primary' variant='contained'>Search</Button>
           </div>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            <Paper elavation={6}>
+            <Paper elevation={6}>
             <Paginate  page={page}/>
             </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={9}>
+            <Posts setCurrentId={setCurrentId} />
           </Grid>
         </Grid>
       </Container>

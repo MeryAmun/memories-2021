@@ -7,8 +7,10 @@ import { getPosts
  } from "../actions/postActions";
 
 export const Paginate = ({page}) => {
+  const {numberOfPages} = useSelector((posts) => posts)
     const classes = useStyles()
     const dispatch = useDispatch()
+   
 
 
     useEffect(() => {
@@ -18,11 +20,12 @@ export const Paginate = ({page}) => {
   return (
       <Pagination
       classes={{ul:classes.ul}}
-      count={5}
+      count={numberOfPages}
       variant="outlined"
       color="primary"
+      page={Number(page) || 1 }
       renderItem={(item) => (
-<PaginationItem {...item} component={Link} to={`/post?page=${1}`}/>
+<PaginationItem {...item} component={Link} to={`/post?page=${item.page}`}/>
       )}
       />
   )
