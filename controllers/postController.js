@@ -12,9 +12,18 @@ const startIndex = (Number(page) - 1 ) * LIMIT; //get starting index of every pa
 const total = await Post.countDocuments({});
 
   const posts = await Post.find().sort({_id: -1 }).limit(LIMIT).skip(startIndex);
-  res.status(200).json({data: posts, currentPage: Number(page), numberOfPage: Math.ceil(total / LIMIT)})
+  res.status(200).json({data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)})
 
 })
+
+const getPost = asyncWrapper(async (req, res, next) => {
+
+  const {id} = req.params;
+
+    const post = await Post.findById(id)
+    res.status(200).json(post)
+  
+  })
 
 const getPostsBySearch = asyncWrapper(async (req, res, next) => {
   const {searchQuery, tags} = req.query
@@ -79,4 +88,4 @@ const likePost = asyncWrapper(async (req, res) => {
     msg: 'Post liked',
   })
 })
-module.exports = { getAllPosts,getPostsBySearch, createPost, updatePost, deletePost, likePost }
+module.exports = { getAllPosts,getPostsBySearch, createPost, updatePost, deletePost, likePost, getPost }
