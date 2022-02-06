@@ -4,6 +4,7 @@ import {
   CREATE,
   DELETE,
   FETCH_ALL,
+  FETCH_POST,
   LIKE,
   UPDATE,
   FETCH_BY_SEARCH ,
@@ -19,6 +20,18 @@ export const getPosts = (page) => async (dispatch) => {
     const { data } = await api.fetchPosts(page)
  
     dispatch({ type: FETCH_ALL, payload: data })
+    dispatch({type: END_LOADING})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+export const getPost = (id, post) => async (dispatch) => {
+  try {
+    dispatch({type: START_LOADING})
+    const { data } = await api.fetchPost(id, post)
+ 
+    dispatch({ type: FETCH_POST, payload: data })
     dispatch({type: END_LOADING})
   } catch (error) {
     console.log(error.message)
