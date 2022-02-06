@@ -7,7 +7,7 @@ import { getPosts
  } from "../actions/postActions";
 
 export const Paginate = ({page}) => {
-  const {numberOfPages} = useSelector((posts) => posts)
+  const {numberOfPages} = useSelector((state) => state.posts)
     const classes = useStyles()
     const dispatch = useDispatch()
    
