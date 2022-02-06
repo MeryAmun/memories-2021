@@ -6,12 +6,14 @@ import { useSelector } from 'react-redux'
 import useStyles from './styles'
 
 export const Posts = ({ setCurrentId }) => {
-  const {posts}= useSelector((state) => state.posts)
+  const { posts} = useSelector((posts) => posts);
   const classes = useStyles()
 
-  return !posts?.length ? (
-    <CircularProgress />
-  ) : (
+ 
+ 
+
+  return (
+    !posts?.length ? <CircularProgress /> : (
     <Grid
       className={classes.container}
       container
@@ -23,6 +25,7 @@ export const Posts = ({ setCurrentId }) => {
           <Post post={post} setCurrentId={setCurrentId} />
         </Grid>
       ))}
-    </Grid>
-  )
-}
+    </Grid>  
+    )
+  );
+};
