@@ -16,6 +16,13 @@ export const PostDetails = () => {
   useEffect(() => {
 dispatch(getPost(id))
   },[id])
+  if(!post) return null;
+
+  if(!isLoading) {
+    return <Paper elevation={6} className={classes.loadingPaper}>
+      <CircularProgress size='7rem'/>
+    </Paper>
+  }
     
   return (
     <Paper style={{padding: '20px', borderRadius:'15px'}} elevation={6}>
