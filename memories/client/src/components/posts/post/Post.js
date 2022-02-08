@@ -54,8 +54,9 @@ export const Post = ({ post, setCurrentId }) => {
   
 
   return (
-    <Card className={classes.card} raised elevation={6}>
     <ButtonBase className={classes.cardAction} onClick={openPost}>
+    <Card className={classes.card} raised elevation={6}>
+   
       <CardMedia className={classes.media} component='img' image={post.selectedFile} />
 
       <div className={classes.overlay}>
@@ -89,7 +90,7 @@ export const Post = ({ post, setCurrentId }) => {
           {post.message}
         </Typography>
       </CardContent>
-      </ButtonBase>
+     
       <CardActions className={classes.cardActions}>
         <Button
           size='small'
@@ -111,5 +112,6 @@ export const Post = ({ post, setCurrentId }) => {
         )}
       </CardActions>
     </Card>
+    </ButtonBase>
   )
 }

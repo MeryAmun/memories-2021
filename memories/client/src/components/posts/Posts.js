@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import useStyles from './styles'
 
 export const Posts = ({ setCurrentId }) => {
-  const { posts, isLoading } = useSelector((state) => state.posts);
+  const { posts, isLoading } = useSelector((posts) => posts);
   const classes = useStyles()
 
  

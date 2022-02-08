@@ -95,10 +95,6 @@ const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagTo
           </Grid>
         </Grid>
       </Container>
-      <br />
-      <br />
-      <br />
-      <br />
     </Grow>
   )
 }
