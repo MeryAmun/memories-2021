@@ -1,4 +1,4 @@
-import { deletePost, likedPost } from '../../../actions/postActions'
+import { getPost, deletePost, likedPost } from '../../../actions/postActions'
 
 import {Button, ButtonBase} from '@material-ui/core'
 import Card from '@material-ui/core/Card'
@@ -50,8 +50,13 @@ export const Post = ({ post, setCurrentId }) => {
     )
   }
 
-  const openPost = () => history.push(`/posts/${post._id}`)
-  
+
+  const openPost = (e) => {
+    // dispatch(getPost(post._id, history));
+
+    history.push(`/posts/${post._id}`);
+  };
+
 
   return (
     <ButtonBase className={classes.cardAction} onClick={openPost}>

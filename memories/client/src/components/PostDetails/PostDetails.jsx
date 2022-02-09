@@ -10,7 +10,7 @@ import useStyles from './styles'
 import { getPost , getPostsBySearch} from '../../actions/postActions';
 
 export const PostDetails = () => {
-  const {post, posts, isLoading} = useSelector((state) => state.posts);
+  const {post, posts, isLoading} = useSelector((posts) => posts);
   const dispatch = useDispatch();
   const history = useHistory()
   const classes = useStyles()
