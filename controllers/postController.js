@@ -28,7 +28,7 @@ const getPost = asyncWrapper(async (req, res, next) => {
 const getPostsBySearch = asyncWrapper(async (req, res, next) => {
   const {searchQuery, tags} = req.query
  const title = new RegExp(searchQuery, 'i');
- const posts = await Post.find({$or:[{title}, {tags:{$in: tags.split('.')}}]})
+ const posts = await Post.find({}, {$or:[{title}, {tags:{$in: tags.split('.')}}]})
  res.status(200).json({data:posts})
 })
 
