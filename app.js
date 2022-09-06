@@ -9,11 +9,12 @@ const authRoutes = require('./routes/authRoutes')
 
 const app = express()
 //wew must always place app.use(cors) middleware above the routes.
-// app.use(cors)
+
 //middleware
 // app.use(express.json())
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({limit: '30mb', extended: true }))
+//app.use(cors)
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')

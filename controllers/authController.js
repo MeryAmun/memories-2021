@@ -19,7 +19,7 @@ const signIn = asyncWrapper(async (req, res, next) => {
 
   const token = jwt.sign(
     { email: existingUser.email, id: existingUser._id },
-    process.env.SECRET_TOKEN_KEY,
+    'memoriesToken123567',
     { expiresIn: '3h' }
   )
   res.status(200).json({ result: existingUser, token })
@@ -41,7 +41,7 @@ const signUp = asyncWrapper(async (req, res, next) => {
   })
   const token = jwt.sign(
     { email: newUser.email, id: newUser._id },
-    process.env.SECRET_TOKEN_KEY,
+    'memoriesToken123567',
     { expiresIn: '3h' }
   )
   res.status(200).json({ newUser, token })
