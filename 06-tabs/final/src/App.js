@@ -11,6 +11,7 @@ function App() {
   const fetchJobs = async () => {
     const reponse = await fetch(url)
     const newJobs = await reponse.json()
+    console.log(newJobs)
     setJobs(newJobs)
     setLoading(false)
   }

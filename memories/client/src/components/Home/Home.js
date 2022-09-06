@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 
 import Container from '@mui/material/Container'
 import { Form } from '../form/Form'
@@ -6,11 +6,11 @@ import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
 import { Posts } from '../posts/Posts'
-import { getPosts, getPostsBySearch } from '../../actions/postActions'
+import {  getPostsBySearch } from '../../actions/postActions'
 import { useDispatch } from 'react-redux'
 import useStyles from './styles'
 import {Paginate} from '../Pagination'
-import {TextField, Button,Typography} from '@mui/material'
+import {TextField, Button} from '@mui/material'
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from 'material-ui-chip-input'
 

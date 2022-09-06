@@ -1,4 +1,4 @@
-import { getPost, deletePost, likedPost } from '../../../actions/postActions'
+import { deletePost, likedPost } from '../../../actions/postActions'
 
 import {Button, ButtonBase} from '@material-ui/core'
 import Card from '@material-ui/core/Card'
@@ -59,11 +59,11 @@ export const Post = ({ post, setCurrentId }) => {
 
 
   return (
-    <ButtonBase className={classes.cardAction} onClick={openPost}>
+    
     <Card className={classes.card} raised elevation={6}>
-   
+   <ButtonBase className={classes.cardAction} onClick={openPost}>
       <CardMedia className={classes.media} component='img' image={post.selectedFile} />
-
+      </ButtonBase>
       <div className={classes.overlay}>
         <Typography variant='h6'>{post.name}</Typography>
         <Typography variant='body2'>
@@ -117,6 +117,6 @@ export const Post = ({ post, setCurrentId }) => {
         )}
       </CardActions>
     </Card>
-    </ButtonBase>
+   
   )
 }

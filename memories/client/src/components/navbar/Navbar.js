@@ -37,7 +37,8 @@ export const Navbar = () => {
     }
     //npm install jwt-decode
     setUser(JSON.parse(localStorage.getItem('profile')))
-  }, [location])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location,user?.token])
 
   return (
     <AppBar
