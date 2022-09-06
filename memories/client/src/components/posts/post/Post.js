@@ -56,7 +56,7 @@ export const Post = ({ post, setCurrentId }) => {
 
     history.push(`/posts/${post._id}`);
   };
-
+console.log(post)
 
   return (
     
